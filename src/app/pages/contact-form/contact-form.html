@@ -1,0 +1,67 @@
+<div class="contact-form-container">
+  <div class="form-card">
+    <div class="form-header">
+      <h2>📬 Contáctanos</h2>
+      <p>Estamos aquí para ayudarte</p>
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input 
+          type="text" 
+          id="nombre"
+          formControlName="nombre"
+          placeholder="Ej: Juan Pérez"
+          [class.is-valid]="f['nombre'].valid && (f['nombre'].dirty || f['nombre'].touched)"
+          [class.is-invalid]="submitted && f['nombre'].errors"
+        >
+        <div class="error-messages" *ngIf="submitted && f['nombre'].errors">
+          <span *ngIf="f['nombre'].errors['required']">El nombre es requerido</span>
+        </div>
+      </div>
+
+      <!-- Campo Email (CORREGIDO: antes decía "Profesión electrónica") -->
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input 
+          type="email" 
+          id="email"
+          formControlName="email"
+          placeholder="ejemplo@correo.com"
+          [class.is-valid]="f['email'].valid && (f['email'].dirty || f['email'].touched)"
+          [class.is-invalid]="submitted && f['email'].errors"
+        >
+        <div class="error-messages" *ngIf="submitted && f['email'].errors">
+          <span *ngIf="f['email'].errors['required']">El email es requerido</span>
+          <span *ngIf="f['email'].errors['email']">Email no válido</span>
+        </div>
+      </div>
+
+      <!-- Campo Mensaje -->
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea 
+          id="mensaje"
+          formControlName="mensaje"
+          placeholder="Escribe tu mensaje aquí..."
+          rows="5"
+          [class.is-valid]="f['mensaje'].valid && (f['mensaje'].dirty || f['mensaje'].touched)"
+          [class.is-invalid]="submitted && f['mensaje'].errors"
+        ></textarea>
+        <div class="error-messages" *ngIf="submitted && f['mensaje'].errors">
+          <span *ngIf="f['mensaje'].errors['required']">El mensaje es requerido</span>
+        </div>
+      </div>
+
+      <!-- Botón de Enviar -->
+      <button type="submit" class="btn-submit" [disabled]="submitted">
+        <span *ngIf="!submitted">Enviar Mensaje 📨</span>
+        <span *ngIf="submitted" class="loading">
+          Enviando...
+        </span>
+      </button>
+    </form>
+  </div>
+</div>

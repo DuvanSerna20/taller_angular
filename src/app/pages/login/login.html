@@ -1,0 +1,70 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>🔑 Iniciar Sesión</h2>
+      <p>Bienvenido de vuelta</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Nombre de usuario</label>
+        <input 
+          type="text" 
+          id="username"
+          formControlName="username"
+          placeholder="usuario123"
+          [class.is-valid]="f['username'].valid && (f['username'].dirty || f['username'].touched)"
+          [class.is-invalid]="submitted && f['username'].errors"
+        >
+        <div class="error-messages" *ngIf="submitted && f['username'].errors">
+          <span *ngIf="f['username'].errors['required']">El usuario es requerido</span>
+          <span *ngIf="f['username'].errors['minlength']">Mínimo 4 caracteres</span>
+          <span *ngIf="f['username'].errors['noWhitespace']">No se permiten espacios</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input 
+          type="email" 
+          id="email"
+          formControlName="email"
+          placeholder="ejemplo@correo.com"
+          [class.is-valid]="f['email'].valid && (f['email'].dirty || f['email'].touched)"
+          [class.is-invalid]="submitted && f['email'].errors"
+        >
+        <div class="error-messages" *ngIf="submitted && f['email'].errors">
+          <span *ngIf="f['email'].errors['required']">El email es requerido</span>
+          <span *ngIf="f['email'].errors['email']">Email no válido</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input 
+          type="password" 
+          id="password"
+          formControlName="password"
+          placeholder="••••••"
+          [class.is-valid]="f['password'].valid && (f['password'].dirty || f['password'].touched)"
+          [class.is-invalid]="submitted && f['password'].errors"
+        >
+        <div class="error-messages" *ngIf="submitted && f['password'].errors">
+          <span *ngIf="f['password'].errors['required']">La contraseña es requerida</span>
+          <span *ngIf="f['password'].errors['minlength']">Mínimo 6 caracteres</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login" [disabled]="submitted">
+        <span *ngIf="!submitted">Iniciar Sesión</span>
+        <span *ngIf="submitted" class="loading">
+          Verificando...
+        </span>
+      </button>
+
+      <div class="register-link">
+        ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+      </div>
+    </form>
+  </div>
+</div>

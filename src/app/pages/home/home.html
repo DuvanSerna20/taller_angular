@@ -1,0 +1,235 @@
+<div class="home-container">
+  <!-- Hero Section con partículas -->
+  <section class="hero-section">
+    <div class="particles">
+      <div class="particle" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-badge animate-pulse">✨ Bienvenido a la nueva era</div>
+      <h1 class="hero-title">
+        <span class="gradient-text">Transformamos</span>
+        <span class="block">ideas en realidad</span>
+      </h1>
+      <p class="hero-subtitle">
+        Creamos experiencias digitales que inspiran, conectan y transforman negocios.
+        Únete a la revolución digital.
+      </p>
+      
+      <div class="hero-cta">
+        <a routerLink="/register" class="btn-primary">
+          <span>Comenzar ahora</span>
+          <i class="fas fa-rocket"></i>
+        </a>
+        <a routerLink="/about" class="btn-secondary">
+          <span>Conocer más</span>
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-count="500">500+</span>
+          <span class="stat-label">Proyectos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="200">200+</span>
+          <span class="stat-label">Clientes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="50">50+</span>
+          <span class="stat-label">Expertos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-shape">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="white" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Features Section con cards interactivas -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">¿Por qué elegirnos?</span>
+        <h2 class="section-title">Características que <span class="gradient-text">marcan la diferencia</span></h2>
+        <p class="section-subtitle">Descubre todo lo que podemos hacer por ti y tu negocio</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card" (mouseenter)="animateCard(1)" (mouseleave)="resetCard(1)">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h3>Responsive</h3>
+              <p>Diseño adaptable a todos los dispositivos</p>
+            </div>
+            <div class="card-back">
+              <i class="fas fa-check-circle"></i>
+              <h4>100% Responsive</h4>
+              <p>Tu sitio se verá perfecto en móviles, tablets y desktop</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card" (mouseenter)="animateCard(2)" (mouseleave)="resetCard(2)">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h3>Rápido</h3>
+              <p>Optimizado para máximo rendimiento</p>
+            </div>
+            <div class="card-back">
+              <i class="fas fa-tachometer-alt"></i>
+              <h4>Velocidad</h4>
+              <p>Carga en menos de 2 segundos para mejor experiencia</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card" (mouseenter)="animateCard(3)" (mouseleave)="resetCard(3)">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Seguro</h3>
+              <p>Validaciones y protección de datos</p>
+            </div>
+            <div class="card-back">
+              <i class="fas fa-lock"></i>
+              <h4>Máxima seguridad</h4>
+              <p>Tus datos están protegidos con encriptación de última generación</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card" (mouseenter)="animateCard(4)" (mouseleave)="resetCard(4)">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="feature-icon">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <h3>Moderno</h3>
+              <p>Diseño profesional y atractivo</p>
+            </div>
+            <div class="card-back">
+              <i class="fas fa-palette"></i>
+              <h4>Diseño único</h4>
+              <p>Interfaces modernas que cautivan a tus usuarios</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section con contador animado -->
+  <section class="stats-section">
+    <div class="stats-bg"></div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let stat of stats; let i = index" 
+             [@fadeInUp]="true" [style.animation-delay]="i * 0.2 + 's'">
+          <div class="stat-icon">{{stat.icon}}</div>
+          <div class="stat-number" [attr.data-target]="stat.value">{{stat.current}}</div>
+          <div class="stat-label">{{stat.label}}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section con diseño moderno -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Nuestros servicios</span>
+        <h2 class="section-title">Soluciones <span class="gradient-text">a tu medida</span></h2>
+        <p class="section-subtitle">Ofrecemos servicios de alta calidad para impulsar tu negocio</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-item" *ngFor="let service of services; let i = index"
+             (mouseenter)="service.hover = true" (mouseleave)="service.hover = false">
+          <div class="service-icon" [class.hover]="service.hover">
+            <i [class]="service.icon"></i>
+          </div>
+          <h3>{{service.title}}</h3>
+          <p>{{service.description}}</p>
+          <a href="#" class="service-link">
+            Saber más <i class="fas fa-arrow-right"></i>
+          </a>
+          <div class="service-bg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section con carrusel -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Testimonios</span>
+        <h2 class="section-title">Lo que dicen <span class="gradient-text">nuestros clientes</span></h2>
+      </div>
+
+      <div class="testimonials-slider">
+        <div class="testimonial-card" *ngFor="let testimonial of testimonials; let i = index"
+             [class.active]="i === currentTestimonial">
+          <div class="testimonial-content">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>{{testimonial.text}}</p>
+            <div class="testimonial-author">
+              <img [src]="testimonial.avatar" [alt]="testimonial.name">
+              <div class="author-info">
+                <h4>{{testimonial.name}}</h4>
+                <span>{{testimonial.position}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-controls">
+          <button class="slider-btn" (click)="prevTestimonial()" [disabled]="currentTestimonial === 0">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="slider-dots">
+            <span *ngFor="let t of testimonials; let i = index" 
+                  class="dot" [class.active]="i === currentTestimonial"
+                  (click)="currentTestimonial = i"></span>
+          </div>
+          <button class="slider-btn" (click)="nextTestimonial()" [disabled]="currentTestimonial === testimonials.length - 1">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>¿Listo para empezar tu proyecto?</h2>
+      <p>Únete a cientos de empresas que ya confían en nosotros</p>
+      <a routerLink="/contact-form" class="btn-cta">
+        Solicitar presupuesto <i class="fas fa-paper-plane"></i>
+      </a>
+    </div>
+    <div class="cta-shape">
+      <svg viewBox="0 0 1440 320">
+        <path fill="white" d="M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+</div>
